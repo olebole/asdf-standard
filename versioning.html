@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Versioning Conventions &mdash; ASDF Standard 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 1.0.0 documentation" href="index.html" />
+    <link rel="next" title="ASDF schema definitions" href="schemas/index.html" />
+    <link rel="prev" title="The tree in-depth" href="tree.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree.html">The tree in-depth</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Versioning Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemas/index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asdf_in_fits.html">Appendix A: Embedding ASDF in FITS</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="tree.html" title="Previous Chapter: The tree in-depth"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; The tree in-d...</span>
+    </a>
+  </li>
+  <li>
+    <a href="schemas/index.html" title="Next Chapter: ASDF schema definitions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">ASDF schema d... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="versioning-conventions">
+<span id="id1"></span><h1>Versioning Conventions<a class="headerlink" href="#versioning-conventions" title="Permalink to this headline">¶</a></h1>
+<p>One of the explicit goals of ASDF is to be as future proof as
+possible.  This involves being able to add features as needed while
+still allowing older libraries that may not understand those new
+features to reasonably make sense of the rest of the file.</p>
+<p>The ASDF standard includes three categories of versions, all of which
+may advance independently of one another.</p>
+<ul>
+<li><p class="first"><strong>Standard version</strong>: The version of the standard as a whole.  This
+version provides a convenient handle to refer to a particular
+snapshot of the ASDF standard at a given time.  This allows
+libraries to advertise support for &#8220;ASDF standard version X.Y.Z&#8221;.</p>
+</li>
+<li><p class="first"><strong>File format version</strong>: Refers to the version of the blocking
+scheme and other details of the low-level file layout.  This is the
+number that appears on the <code class="docutils literal"><span class="pre">#ASDF</span></code> header line at the start of
+every ASDF file and is essential to correctly interpreting the
+various parts of an ASDF file.</p>
+</li>
+<li><p class="first"><strong>Schema versions</strong>: Each schema for a particular YAML tag is
+individually versioned.  This allows schemas to evolve, while still
+allowing data written to an older version of the schema to be
+validated correctly.</p>
+<p>Schemas provided by third parties (i.e. not in the ASDF
+specification itself) are also strongly encouraged to be versioned
+as well.</p>
+</li>
+</ul>
+<p>Version numbers all follow the same convention according to the
+<a class="reference external" href="http://semver.org/spec/v2.0.0.html">Semantic Versioning 2.0.0</a>
+specification.</p>
+<ul class="simple">
+<li><strong>major version</strong>: The major version number advances when a
+backward incompatible change is made.  For example, this would
+happen when an existing property in a schema changes meaning.
+(An exception to this is that when the major version is 0, there
+are no guarantees of backward compatibility.)</li>
+<li><strong>minor version</strong>: The minor version number advances when a
+backward compatible change is made.  For example, this would
+happen when new properties are added to a schema.</li>
+<li><strong>patch version</strong>: The patch version number advances when a minor
+change is made that does not directly affect the file format itself.
+For example, this would happen when a misspelling or grammatical
+error in the specification text is made that does not affect the
+interpretation of an ASDF file.</li>
+<li><strong>pre-release version</strong>: An optional fourth part may also be present
+following a hyphen to indicate a pre-release version in development.
+For example, the pre-release of version <code class="docutils literal"><span class="pre">1.2.3</span></code> would be
+<code class="docutils literal"><span class="pre">1.2.3-dev+a2c4</span></code>.</li>
+</ul>
+<div class="section" id="relationship-of-version-numbers">
+<h2>Relationship of version numbers<a class="headerlink" href="#relationship-of-version-numbers" title="Permalink to this headline">¶</a></h2>
+<p>The major number in the <strong>standard version</strong> is incremented whenever
+the major number in the <strong>file format version</strong> is incremented.</p>
+<p>At present the <strong>schema versions</strong> move in lock-step with the
+<strong>standard version</strong>.  However, in the future, we may break from that
+convention, so libraries should address versions of individual schemas
+independently.</p>
+</div>
+<div class="section" id="handling-version-mismatches">
+<h2>Handling version mismatches<a class="headerlink" href="#handling-version-mismatches" title="Permalink to this headline">¶</a></h2>
+<p>Given these conventions, the ASDF standard recommends certain behavior
+of ASDF libraries.  ASDF libraries should, but are not required, to
+support as many existing versions of the file format and schemas as
+possible, and use the version numbers in the file to act accordingly.</p>
+<p>For future-proofing, the library should gracefully handle version
+numbers that are greater than those understood by the library.  The
+following applies to both kinds of version numbers that appear in the
+file: the <strong>file format version</strong> and <strong>schema versions</strong>.</p>
+<ul class="simple">
+<li>When encountering a <strong>major version</strong> that is greater than the
+understood version, by default, an exception should be raised.  This
+behavior may be overridden through explicit user interaction, in
+which case the library will attempt to handle the element using the
+conventions of the most recent understood version.</li>
+<li>When encountering a <strong>minor version</strong> that is greater than the
+understood version, a warning should be emitted, and the library
+should attempt to handle the element using the conventions of the
+most recent understood version.</li>
+<li>When encountering a <strong>patch version</strong> that is greater than the
+understood version, silently ignore the difference and handle the
+element using the conventions of the most recent understood version.</li>
+</ul>
+<p>When writing ASDF files, it is recommended that libraries provide both
+of the following modes of operation:</p>
+<ul class="simple">
+<li>Upgrade the file to the latest versions of the file format and
+schemas understood by the library.</li>
+<li>Preserve the version of the ASDF standard used by the input file.</li>
+</ul>
+<p>Writing out a file that mixes versions of schema from different
+versions of the ASDF standard is not recommended, though such a file
+should be accepted by readers given the rules above.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Michael Droettboom, Erik Bray, Space Telescope Science Institute.<br/>
+      Last updated on Sep 18, 2015.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

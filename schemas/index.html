@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ASDF schema definitions &mdash; ASDF Standard 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 1.0.0 documentation" href="../index.html" />
+    <link rel="next" title="Core" href="core.html" />
+    <link rel="prev" title="Versioning Conventions" href="../versioning.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tree.html">The tree in-depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning Conventions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asdf_in_fits.html">Appendix A: Embedding ASDF in FITS</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../versioning.html" title="Previous Chapter: Versioning Conventions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Versioning Co...</span>
+    </a>
+  </li>
+  <li>
+    <a href="core.html" title="Next Chapter: Core"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Core &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="asdf-schema-definitions">
+<span id="schema"></span><h1>ASDF schema definitions<a class="headerlink" href="#asdf-schema-definitions" title="Permalink to this headline">¶</a></h1>
+<p>This reference section describes the schema files for the built-in
+tags in ASDF.</p>
+<p>ASDF schemas are arranged into &#8220;modules&#8221;.  All ASDF implementations
+must support the &#8220;core&#8221; module, but the other modules are optional.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/asdf-1.0.0.html">asdf: Top-level schema for every ASDF file.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/complex-1.0.0.html">complex: Complex number value.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/ndarray-1.0.0.html">ndarray: An <em>n</em>-dimensional array.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/table-1.0.0.html">table: A table.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/column-1.0.0.html">column: A column in a table.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/constant-1.0.0.html">constant: Specify that a value is a constant.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/software-1.0.0.html">software: Describes a software package.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/core/history_entry-1.0.0.html">history_entry: An entry in the file history.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fits.html">FITS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/fits/fits-1.0.0.html">fits: A FITS file inside of an ASDF file.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unit.html">Unit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/unit/unit-1.0.0.html">unit: Physical unit.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/unit/defunit-1.0.0.html">defunit: Define a new physical unit.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/time/time-1.0.0.html">time: Represents an instance in time.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#compound-transformations">Compound transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#arithmetic-operations">Arithmetic operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#simple-transforms">Simple Transforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#projections">Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#polynomials">Polynomials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#regions-and-labels">Regions and labels</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="wcs.html">WCS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/wcs/wcs-1.0.0.html">wcs: A system for describing generalized world coordinate transformations.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/wcs/step-1.0.0.html">step: Describes a single step of a WCS transform pipeline.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/wcs/frame-1.0.0.html">frame: The base class of all coordinate frames.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/wcs/celestial_frame-1.0.0.html">celestial_frame: Represents a celestial frame.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/wcs/spectral_frame-1.0.0.html">spectral_frame: Represents a spectral frame.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stsci.edu/asdf/wcs/composite_frame-1.0.0.html">composite_frame: Represents a set of frames.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The following graph shows the dependencies between modules:</p>
+<p class="graphviz">
+<img src="../_images/graphviz-132661a6012d094649edde1aa59164083f839949.png" alt="digraph modules {
+&quot;fits&quot; -&gt; &quot;core&quot;
+&quot;unit&quot; -&gt; &quot;core&quot;
+&quot;time&quot; -&gt; &quot;core&quot;
+&quot;transform&quot; -&gt; &quot;core&quot;
+&quot;wcs&quot; -&gt; &quot;transform&quot;
+&quot;wcs&quot; -&gt; &quot;unit&quot;
+&quot;wcs&quot; -&gt; &quot;time&quot;
+}" />
+</p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Michael Droettboom, Erik Bray, Space Telescope Science Institute.<br/>
+      Last updated on Sep 18, 2015.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

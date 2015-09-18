@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>asdf-schema: ASDF schema &mdash; ASDF Standard 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 1.0.0 documentation" href="../../../index.html" />
+    <link rel="up" title="Extending ASDF" href="../../../extending.html" />
+    <link rel="next" title="Known limits" href="../../../known_limits.html" />
+    <link rel="prev" title="draft: YAML Schema" href="../yaml-schema/draft-01.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tree.html">The tree in-depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../asdf_in_fits.html">Appendix A: Embedding ASDF in FITS</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../yaml-schema/draft-01.html" title="Previous Chapter: draft: YAML Schema"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; draft: YAML S...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../../../known_limits.html" title="Next Chapter: Known limits"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Known limits &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="asdf-schema-asdf-schema">
+<span id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0"></span><h1>asdf-schema: ASDF schema<a class="headerlink" href="#asdf-schema-asdf-schema" title="Permalink to this headline">¶</a></h1>
+<p><span class="soft">Type:</span> <a class="reference external" href="http://stsci.edu/schemas/yaml-schema/draft-01">draft-01</a> <span class="soft">and</span> object.</p>
+<p>ASDF schema</p>
+<p>A metaschema extending YAML Schema and JSON Schema to add support
+for some ASDF-specific checks, related to nd-arrays.</p>
+<p><span class="category">All of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0-allof-0"><span class="entry">0</span></p>
+<p><span class="soft">Type:</span> <a class="reference external" href="http://stsci.edu/schemas/yaml-schema/draft-01">draft-01</a>.</p>
+<p id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0-allof-1"><span class="entry">1</span></p>
+<p><span class="soft">Type:</span> object.</p>
+<p><span class="category">Properties:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0-allof-1-properties-max-ndim"><span class="entry">max_ndim</span></p>
+<p><span class="soft">Type:</span> integer  ≥ 0.</p>
+<p>Specifies that the corresponding ndarray is at most the
+given number of dimensions.  If the array has fewer
+dimensions, it should be logically treated as if it were
+&#8220;broadcast&#8221; to the expected dimensions by adding 1&#8217;s to the
+front of the shape list.</p>
+<p id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0-allof-1-properties-ndim"><span class="entry">ndim</span></p>
+<p><span class="soft">Type:</span> integer  ≥ 0.</p>
+<p>Specifies that the matching ndarray is exactly the given
+number of dimensions.</p>
+<p id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0-allof-1-properties-datatype"><span class="entry">datatype</span></p>
+<p><span class="soft">Type:</span> <a class="reference external" href="http://stsci.edu/schemas/asdf/core/ndarray-1.0.0#definitions/datatype-1.0.0">datatype-1.0.0</a>.</p>
+<p>Specifies the datatype of the ndarray.</p>
+<p>By default, an array is considered &#8220;matching&#8221; if the array
+can be cast to the given datatype without data loss.  For
+exact datatype matching, set <code class="code docutils literal"><span class="pre">exact_datatype</span></code> to <code class="code docutils literal"><span class="pre">true</span></code>.</p>
+<p id="http-stsci-edu-schemas-asdf-asdf-schema-1-0-0-allof-1-properties-exact-datatype"><span class="entry">exact_datatype</span></p>
+<p><span class="soft">Type:</span> boolean.</p>
+<p>If <code class="code docutils literal"><span class="pre">true</span></code>, the datatype must match exactly.</p>
+<p><span class="soft">Default:</span> false</p>
+</div></blockquote>
+</div></blockquote>
+<div class="section" id="original-schema-in-yaml">
+<h2>Original schema in YAML<a class="headerlink" href="#original-schema-in-yaml" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference download internal" href="../../../_downloads/asdf-schema-1.0.0.yaml"><code class="xref download docutils literal"><span class="pre">[Download</span> <span class="pre">raw]</span></code></a></p>
+<div class="highlight-yaml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">%YAML</span> <span class="m">1.1</span>
+<span class="nn">---</span>
+<span class="l-Scalar-Plain">$schema</span><span class="p-Indicator">:</span> <span class="s">&quot;http://json-schema.org/draft-04/schema&quot;</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="s">&quot;http://stsci.edu/schemas/asdf/asdf-schema-1.0.0&quot;</span>
+<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">ASDF schema</span>
+<span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+  <span class="no">A metaschema extending YAML Schema and JSON Schema to add support</span>
+  <span class="no">for some ASDF-specific checks, related to nd-arrays.</span>
+<span class="l-Scalar-Plain">allOf</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;http://stsci.edu/schemas/yaml-schema/draft-01&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">max_ndim</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">Specifies that the corresponding ndarray is at most the</span>
+          <span class="no">given number of dimensions.  If the array has fewer</span>
+          <span class="no">dimensions, it should be logically treated as if it were</span>
+          <span class="no">&quot;broadcast&quot; to the expected dimensions by adding 1&#39;s to the</span>
+          <span class="no">front of the shape list.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+        <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+
+      <span class="l-Scalar-Plain">ndim</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">Specifies that the matching ndarray is exactly the given</span>
+          <span class="no">number of dimensions.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+        <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+
+      <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">Specifies the datatype of the ndarray.</span>
+
+          <span class="no">By default, an array is considered &quot;matching&quot; if the array</span>
+          <span class="no">can be cast to the given datatype without data loss.  For</span>
+          <span class="no">exact datatype matching, set `exact_datatype` to `true`.</span>
+        <span class="l-Scalar-Plain">allOf</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;http://stsci.edu/schemas/asdf/core/ndarray-1.0.0#definitions/datatype-1.0.0&quot;</span>
+
+      <span class="l-Scalar-Plain">exact_datatype</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">If `true`, the datatype must match exactly.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<span class="nn">...</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Michael Droettboom, Erik Bray, Space Telescope Science Institute.<br/>
+      Last updated on Sep 18, 2015.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

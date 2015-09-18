@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Low-level file layout &mdash; ASDF Standard 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 1.0.0 documentation" href="index.html" />
+    <link rel="next" title="The tree in-depth" href="tree.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree.html">The tree in-depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Versioning Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemas/index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asdf_in_fits.html">Appendix A: Embedding ASDF in FITS</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="intro.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction</span>
+    </a>
+  </li>
+  <li>
+    <a href="tree.html" title="Next Chapter: The tree in-depth"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">The tree in-d... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="low-level-file-layout">
+<h1>Low-level file layout<a class="headerlink" href="#low-level-file-layout" title="Permalink to this headline">¶</a></h1>
+<p>The overall structure of a file is as follows (in order):</p>
+<ul class="simple">
+<li><a class="reference internal" href="#header"><span>Header</span></a></li>
+<li><a class="reference internal" href="#comments"><span>Comments</span></a>, optional</li>
+<li><a class="reference internal" href="#tree"><span>Tree</span></a>, optional</li>
+<li>Zero or more <a class="reference internal" href="#block"><span>Blocks</span></a></li>
+<li><a class="reference internal" href="#block-index"><span>Block index</span></a>, optional</li>
+</ul>
+<p>ASDF is a hybrid text and binary format.  The header, tree and block
+index are text, (specifically, in UTF-8 with DOS or UNIX-style
+newlines), while the blocks are raw binary.</p>
+<p>The low-level file layout is designed in such a way that the tree
+section can be edited by hand, possibly changing its size, without
+requiring changes in other parts of the file.  While such an operation
+may invalidate the <a class="reference internal" href="#block-index"><span>Block index</span></a>, the format is designed so that
+if the block index is removed or invalid, it may be regenerated by
+&#8220;skipping along&#8221; the blocks in the file.</p>
+<p>The same is not true for resizing a block, which has an explicit size
+stored in the block header (except for, optionally, the last block).</p>
+<p>Note also that, by design, an ASDF file containing no binary blocks is
+also a completely standard and valid YAML file.</p>
+<p>Additionally, the spec allows for extra unallocated space after the
+tree and between blocks.  This allows libraries to more easily update
+the files in place, since it allows expansion of certain areas without
+rewriting of the entire file.</p>
+<div class="section" id="header">
+<span id="id1"></span><h2>Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h2>
+<p>All ASDF files must start with a short one-line header.  For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1">#ASDF 1.0.0</span>
+</pre></div>
+</div>
+<p>It is made up of two parts, separated by white space characters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>ASDF token</strong>: The constant string <code class="docutils literal"><span class="pre">#ASDF</span></code>. This can be used to
+quickly identify the file as an ASDF file by reading the first 5
+bytes.  It begins with a <code class="docutils literal"><span class="pre">#</span></code> so it will be treated as a YAML
+comment such that the <a class="reference internal" href="#header"><span>Header</span></a> and the <a class="reference internal" href="#tree"><span>Tree</span></a> together
+form a valid YAML file.</li>
+<li><strong>File format version</strong>: The version of the low-level file format
+that this file was written with.  This version may differ from the
+version of the ASDF specification, and is only updated when a
+change is made that affects the layout of file.  It follows the
+<a class="reference external" href="http://semver.org/spec/v2.0.0.html">Semantic Versioning 2.0.0</a>
+specification. See <a class="reference internal" href="versioning.html#versioning-conventions"><span>Versioning Conventions</span></a> for more
+information about these versions.</li>
+</ul>
+</div></blockquote>
+<p>The header in EBNF form:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">asdf_token = &quot;#ASDF&quot;</span>
+<span class="l-Scalar-Plain">header     = asdf_token &quot; &quot; format_version [&quot;\r&quot;] &quot;\n&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comments">
+<span id="id2"></span><h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>Additional comment lines may appear between the Header and the Tree.</p>
+<p>The use of comments here is intended for information for the ASDF
+parser, and not information of general interest to the end user.  All
+data of interest to the end user should be in the Tree.</p>
+<p>Each line must begin with a <code class="docutils literal"><span class="pre">#</span></code> character.</p>
+</div>
+<div class="section" id="tree">
+<span id="id3"></span><h2>Tree<a class="headerlink" href="#tree" title="Permalink to this headline">¶</a></h2>
+<p>The tree stores structured information using <a class="reference external" href="http://yaml.org/spec/1.1/">YAML Ain’t Markup
+Language (YAML™) 1.1</a> syntax.  While it
+is the main part of most ASDF files, it is entirely optional, and a
+ASDF file may skip it completely.  This is useful for creating files
+in <a class="reference internal" href="#exploded"><span>Exploded form</span></a>.  Interpreting the contents of this section is
+described in greater detail in <a class="reference internal" href="tree.html#tree-in-depth"><span>The tree in-depth</span></a>.  This section
+only deals with the serialized representation of the tree, not its
+logical contents.</p>
+<p>The tree is always encoded in UTF-8, without an explicit byteorder
+marker (BOM). Newlines in the tree may be either DOS (<code class="docutils literal"><span class="pre">&quot;\r\n&quot;</span></code>) or
+UNIX (<code class="docutils literal"><span class="pre">&quot;\n&quot;</span></code>) format.</p>
+<p>In ASDF 1.0.0, the tree must be encoded in <a class="reference external" href="http://yaml.org/spec/1.1/">YAML version 1.1</a>.  At the time of this writing, the
+latest version of the YAML specification is 1.2, however most YAML
+parsers only support YAML 1.1, and the benefits of YAML 1.2 are minor.
+Therefore, for maximum portability, ASDF requires that the YAML is
+encoded in YAML 1.1.  To declare that YAML 1.1 is being used, the tree
+must begin with the following line:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="nt">%YAML</span> <span class="m">1.1</span>
+</pre></div>
+</div>
+<p>The tree must contain exactly one YAML document, starting with <code class="docutils literal"><span class="pre">---</span></code>
+(YAML document start marker) and ending with <code class="docutils literal"><span class="pre">...</span></code> (YAML document
+end marker), each on their own line.  Between these two markers is the
+YAML content.  For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="nt">%YAML</span> <span class="m">1.1</span>
+<span class="nt">%TAG</span> <span class="kt">!</span> <span class="kt">tag:stsci.edu:asdf/</span>
+<span class="nn">---</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/asdf-1.0.0</span>
+<span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">1024</span><span class="p-Indicator">,</span> <span class="nv">1024</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+<p>The size of the tree is not explicitly specified in the file, so that
+it can easily be edited by hand.  Therefore, ASDF parsers must search
+for the end of the tree by looking for the end-of-document marker
+(<code class="docutils literal"><span class="pre">...</span></code>) on its own line.  For example, the following regular
+expression may be used to find the end of the tree:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">\r?\n...\r?\n</span>
+</pre></div>
+</div>
+<p>Though not required, the tree should be followed by some unused space
+to allow for the tree to be updated and increased in size without
+performing an insertion operation in the file.  It also may be
+desirable to align the start of the first block to a filesystem block
+boundary.  This empty space may be filled with any content (as long as
+it doesn&#8217;t contain the <code class="docutils literal"><span class="pre">block_magic_token</span></code> described in
+<a class="reference internal" href="#block"><span>Blocks</span></a>).  It is recommended that the content is made up of space
+characters (<code class="docutils literal"><span class="pre">0x20</span></code>) so it appears as empty space when viewing the
+file.</p>
+</div>
+<div class="section" id="blocks">
+<span id="block"></span><h2>Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline">¶</a></h2>
+<p>Following the tree and some empty space, or immediately following the
+header, there are zero or more binary blocks.</p>
+<p>Blocks represent a contiguous chunk of binary data and nothing more.
+Information about how to interpret the block, such as the data type or
+array shape, is stored entirely in <code class="docutils literal"><span class="pre">ndarray</span></code> structures in the tree,
+as described in <a class="reference internal" href="schemas/stsci.edu/asdf/core/ndarray-1.0.0.html#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0"><span>ndarray</span></a>.  This allows
+for a very flexible type system on top of a very simple approach to
+memory management within the file.  It also allows for new extensions
+to ASDF that might interpret the raw binary data in ways that are yet
+to be defined.</p>
+<p>There may be an arbitrary amount of unused space between the end of
+the tree and the first block.  To find the beginning of the first
+block, ASDF parsers should search from the end of the tree for the
+first occurrence of the <code class="docutils literal"><span class="pre">block_magic_token</span></code>.  If the file contains
+no tree, the first block must begin immediately after the header with
+no padding.</p>
+<div class="section" id="block-header">
+<span id="id4"></span><h3>Block header<a class="headerlink" href="#block-header" title="Permalink to this headline">¶</a></h3>
+<p>Each block begins with the following header:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">block_magic_token</span></code> (4 bytes): Indicates the start of the block.
+This allows the file to contain some unused space in which to grow
+the tree, and to perform consistency checks when jumping from one
+block to the next.  It is made up of the following 4 8-bit characters:<ul>
+<li>in hexadecimal: d3, 42, 4c, 4b</li>
+<li>in ascii: <code class="docutils literal"><span class="pre">&quot;\323BLK&quot;</span></code></li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">header_size</span></code> (16-bit unsigned integer, big-endian): Indicates the
+size of the remainder of the header (not including the length of the
+<code class="docutils literal"><span class="pre">header_size</span></code> entry itself or the <code class="docutils literal"><span class="pre">block_magic_token</span></code>), in bytes.
+It is stored explicitly in the header itself so that the header may be
+enlarged in a future version of the ASDF standard while retaining
+backward compatibility.  Importantly, ASDF parsers should not assume
+a fixed size of the header, but should obey the <code class="docutils literal"><span class="pre">header_size</span></code>
+defined in the file.  In ASDF version 0.1, this should be at least
+48, but may be larger, for example to align the beginning of the
+block content with a file system block boundary.</li>
+<li><code class="docutils literal"><span class="pre">flags</span></code> (32-bit unsigned integer, big-endian): A bit field
+containing flags (described below).</li>
+<li><code class="docutils literal"><span class="pre">compression</span></code> (4-byte byte string): The name of the compression
+algorithm, if any.  Should be <code class="docutils literal"><span class="pre">\0\0\0\0</span></code> to indicate no
+compression.  See <a class="reference internal" href="#compression"><span>Compression</span></a> for valid values.</li>
+<li><code class="docutils literal"><span class="pre">allocated_size</span></code> (64-bit unsigned integer, big-endian): The amount
+of space allocated for the block (not including the header), in
+bytes.</li>
+<li><code class="docutils literal"><span class="pre">used_size</span></code> (64-bit unsigned integer, big-endian): The amount of
+used space for the block on disk (not including the header), in
+bytes.</li>
+<li><code class="docutils literal"><span class="pre">data_size</span></code> (64-bit unsigned integer, big-endian): The size of the
+block when decoded, in bytes.  If <code class="docutils literal"><span class="pre">compression</span></code> is all zeros
+(indicating no compression), it <strong>must</strong> be equal to <code class="docutils literal"><span class="pre">used_size</span></code>.
+If compression is being used, this is the size of the decoded block
+data.</li>
+<li><code class="docutils literal"><span class="pre">checksum</span></code> (16-byte string): An optional MD5 checksum of the used
+data in the block.  The special value of all zeros indicates that no
+checksum verification should be performed.</li>
+</ul>
+</div>
+<div class="section" id="flags">
+<h3>Flags<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h3>
+<p>The following bit flags are understood in the <code class="docutils literal"><span class="pre">flags</span></code> field:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">STREAMED</span></code> (0x1): When set, the block is in streaming mode, and it
+extends to the end of the file.  When set, the <code class="docutils literal"><span class="pre">allocated_size</span></code>,
+<code class="docutils literal"><span class="pre">used_size</span></code> and <code class="docutils literal"><span class="pre">data_size</span></code> fields are ignored.  By necessity,
+any block with the <code class="docutils literal"><span class="pre">STREAMED</span></code> bit set must be the last block in
+the file.</li>
+</ul>
+</div>
+<div class="section" id="compression">
+<span id="id5"></span><h3>Compression<a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h3>
+<p>Currently, two block compression types are supported:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">zlib</span></code>: The zlib lossless compression algorithm.  It is widely
+used, patent-unencumbered, and has an implementation released under
+a permissive license in <a class="reference external" href="http://www.zlib.net/">zlib</a>.</li>
+<li><code class="docutils literal"><span class="pre">bzp2</span></code>: The bzip2 lossless compression algorithm.  It is widely
+used, assumed to be patent-unencumbered, and has an implementation
+released under a permissive license in the <a class="reference external" href="http://www.bzip.org/">bzip2 library</a>.</li>
+</ul>
+</div>
+<div class="section" id="block-content">
+<h3>Block content<a class="headerlink" href="#block-content" title="Permalink to this headline">¶</a></h3>
+<p>Immediately following the block header, there are exactly
+<code class="docutils literal"><span class="pre">used_space</span></code> bytes of meaningful data, followed by
+<code class="docutils literal"><span class="pre">allocated_space</span> <span class="pre">-</span> <span class="pre">used_space</span></code> bytes of unused data.  The exact
+content of the unused data is not enforced.  The ability to have gaps
+of unused space allows an ASDF writer to reduce the number of disk
+operations when updating the file.</p>
+</div>
+</div>
+<div class="section" id="block-index">
+<span id="id6"></span><h2>Block index<a class="headerlink" href="#block-index" title="Permalink to this headline">¶</a></h2>
+<p>The block index allows for fast random access to each of the blocks in
+the file.  It is completely optional: if not present, libraries may
+&#8220;skip along&#8221; the block headers to find the location of each block in
+the file.  Libraries should detect invalid or obsolete block indices
+and ignore them and regenerate the index by skipping along the block
+headers.</p>
+<p>The block index appears at the end of the file to make streaming an
+ASDF file possible without needing to determine the size of all blocks
+up front, which is non-trivial in the case of compression.  It also
+allows for updating the index without an expensive insertion operation
+earlier in the file.</p>
+<p>The block index must appear immediately after the allocated space for
+the last block in the file.  If the last block is a streaming block,
+no block index may be present &#8211; the streaming block feature and block
+index are incompatible.</p>
+<p>If no blocks are present in the file, the block index must also be
+absent.</p>
+<p>The block index consists of a header, followed by a YAML document
+containing the indices of each block in the file.</p>
+<p>The header must be exactly:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1">#ASDF BLOCK INDEX</span>
+</pre></div>
+</div>
+<p>followed by a DOS or UNIX newline.</p>
+<p>Following the header is a YAML document (in YAML version 1.1, like the
+<a class="reference internal" href="#tree"><span>Tree</span></a>), containing a list of integers indicating the byte offset
+of each block in the file.</p>
+<p>The following is an example block index:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1">#ASDF BLOCK INDEX</span>
+<span class="nt">%YAML</span> <span class="m">1.1</span>
+<span class="nn">---</span> <span class="p-Indicator">[</span><span class="nv">2043</span><span class="p-Indicator">,</span> <span class="nv">16340</span><span class="p-Indicator">]</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+<p>The offsets in the block index must be monotonically increasing, and
+must, by definition, be at least &#8220;block header size&#8221; apart.  If they
+were allowed to appear in any order, it would be impossible to rebuild
+the index by skipping blocks were the index to become damaged or
+out-of-sync.</p>
+<p>Additional zero-valued bytes may appear after the block index.  This
+is mainly to support operating systems, such as Microsoft Windows,
+where truncating the file may not be easily possible.</p>
+<div class="section" id="implementation-recommendations">
+<h3>Implementation recommendations<a class="headerlink" href="#implementation-recommendations" title="Permalink to this headline">¶</a></h3>
+<p>Libraries should look for the block index by reading backward from the
+end of the file.</p>
+<p>Libraries should be conservative about what is an acceptable index,
+since addressing incorrect parts of the file could result in undefined
+behavior.</p>
+<p>The following checks are recommended:</p>
+<ul class="simple">
+<li>Always ensure that the first offset entry matches the location of
+the first block in the file.  This will catch the common use case
+where the YAML tree was edited by hand without updating the index.
+If they do not match, do not use the entire block index.</li>
+<li>Ensure that the last entry in the index refers to a block magic
+token, and that the end of the allocated space in the last block is
+immediately followed by the block index.  If they do not match, do
+not use the entire block index.</li>
+<li>When using an offset in the block index, always ensure that the
+block magic token exists at that offset before reading data.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="exploded-form">
+<span id="exploded"></span><h2>Exploded form<a class="headerlink" href="#exploded-form" title="Permalink to this headline">¶</a></h2>
+<p>Exploded form expands a self-contained ASDF file into multiple files:</p>
+<ul class="simple">
+<li>An ASDF file containing only the header and tree, which by design is
+also a valid YAML file.</li>
+<li><em>n</em> ASDF files, each containing a single block.</li>
+</ul>
+<p>Exploded form is useful in the following scenarios:</p>
+<ul class="simple">
+<li>Not all text editors may handle the hybrid text and binary nature of
+the ASDF file, and therefore either can&#8217;t open an ASDF file or would
+break an ASDF file upon saving.  In this scenario, a user may explode
+the ASDF file, edit the YAML portion as a pure YAML file, and
+implode the parts back together.</li>
+<li>Over a network protocol, such as HTTP, a client may only need to
+access some of the blocks.  While reading a subset of the file can
+be done using HTTP <code class="docutils literal"><span class="pre">Range</span></code> headers, not all web servers support
+this HTTP feature.  Exploded form allows each block to be requested
+directly by a specific URI.</li>
+<li>An ASDF writer may stream a table to disk, when the size of the table
+is not known at the outset.  Using exploded form simplifies this,
+since a standalone file containing a single table can be iteratively
+appended to without worrying about any blocks that may follow it.</li>
+</ul>
+<p>Exploded form describes a convention for storing ASDF file content in
+multiple files, but it does not require any additions to the file
+format itself.  There is nothing indicating that an ASDF file is in
+exploded form, other than the fact that some or all of its blocks come
+from external files.  The exact way in which a file is exploded is up
+to the library and tools implementing the standard.  In the simplest
+scenario, to explode a file, each <a class="reference internal" href="schemas/stsci.edu/asdf/core/ndarray-1.0.0.html#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-source"><span>ndarray source property</span></a>
+in the tree is converted from a local block reference into a relative
+URI.</p>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Michael Droettboom, Erik Bray, Space Telescope Science Institute.<br/>
+      Last updated on Sep 18, 2015.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

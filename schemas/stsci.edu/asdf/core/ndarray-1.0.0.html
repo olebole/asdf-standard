@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ndarray: An n-dimensional array. &mdash; ASDF Standard 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../../../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../../../_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 1.0.0 documentation" href="../../../../index.html" />
+    <link rel="up" title="Core" href="../../../core.html" />
+    <link rel="next" title="table: A table." href="table-1.0.0.html" />
+    <link rel="prev" title="complex: Complex number value." href="complex-1.0.0.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../../../index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../../../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tree.html">The tree in-depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../versioning.html">Versioning Conventions</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../asdf_in_fits.html">Appendix A: Embedding ASDF in FITS</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="complex-1.0.0.html" title="Previous Chapter: complex: Complex number value."><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; complex: Comp...</span>
+    </a>
+  </li>
+  <li>
+    <a href="table-1.0.0.html" title="Next Chapter: table: A table."><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">table: A table. &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="ndarray-an-n-dimensional-array">
+<span id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0"></span><h1>ndarray: An <em>n</em>-dimensional array.<a class="headerlink" href="#ndarray-an-n-dimensional-array" title="Permalink to this headline">¶</a></h1>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span>definitions/inline-data</span></a> <span class="soft">or</span> object.</p>
+<p>An <em>n</em>-dimensional array.</p>
+<p>There are two ways to store the data in an ndarray.</p>
+<ul class="simple">
+<li>Inline in the tree: This is recommended only for small arrays.  In
+this case, the entire <code class="code docutils literal"><span class="pre">ndarray</span></code> tag may be a nested list, in
+which case the type of the array is inferred from the content. (See
+the rules for type inference in the <code class="code docutils literal"><span class="pre">inline-data</span></code> definition
+below.)  The inline data may also be given in the <code class="code docutils literal"><span class="pre">data</span></code>
+property, in which case it is possible to explicitly specify the
+<code class="code docutils literal"><span class="pre">datatype</span></code> and other properties.</li>
+<li>External to the tree: The data comes from a <a class="reference internal" href="../../../../file_layout.html#block"><span>block</span></a>
+within the same ASDF file or an external ASDF file referenced by a
+URI.</li>
+</ul>
+<p><span class="category">Definitions:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span class="entry">scalar-datatype</span></p>
+<p><span class="soft">Type:</span> string <span class="soft">from</span> [&#8220;int8&#8221;, &#8220;uint8&#8221;, &#8220;int16&#8221;, &#8220;uint16&#8221;, &#8220;int32&#8221;, &#8220;uint32&#8221;, &#8220;int64&#8221;, &#8220;uint64&#8221;, &#8220;float32&#8221;, &#8220;float64&#8221;, &#8220;complex64&#8221;, &#8220;complex128&#8221;, &#8220;bool8&#8221;] <span class="soft">or</span> array.</p>
+<p>Describes the type of a single element.</p>
+<p>There is a set of numeric types, each with a single identifier:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">int8</span></code>, <code class="code docutils literal"><span class="pre">int16</span></code>, <code class="code docutils literal"><span class="pre">int32</span></code>, <code class="code docutils literal"><span class="pre">int64</span></code>: Signed
+integer types, with the given bit size.</li>
+<li><code class="code docutils literal"><span class="pre">uint8</span></code>, <code class="code docutils literal"><span class="pre">uint16</span></code>, <code class="code docutils literal"><span class="pre">uint32</span></code>, <code class="code docutils literal"><span class="pre">uint64</span></code>:
+Unsigned integer types, with the given bit size.</li>
+<li><code class="code docutils literal"><span class="pre">float32</span></code>: Single-precision floating-point type or
+&#8220;binary32&#8221;, as defined in IEEE 754.</li>
+<li><code class="code docutils literal"><span class="pre">float64</span></code>: Double-precision floating-point type or
+&#8220;binary64&#8221;, as defined in IEEE 754.</li>
+<li><code class="code docutils literal"><span class="pre">complex64</span></code>: Complex number where the real and imaginary
+parts are each single-precision floating-point (&#8220;binary32&#8221;)
+numbers, as defined in IEEE 754.</li>
+<li><code class="code docutils literal"><span class="pre">complex128</span></code>: Complex number where the real and imaginary
+parts are each double-precision floating-point (&#8220;binary64&#8221;)
+numbers, as defined in IEEE 754.</li>
+</ul>
+<p>There are two distinct fixed-length string types, which must
+be indicated with a 2-element array where the first element is an
+identifier for the string type, and the second is a length:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">ascii</span></code>: A string containing ASCII text (all codepoints &lt;
+128), where each character is 1 byte.</li>
+<li><code class="code docutils literal"><span class="pre">ucs4</span></code>: A string containing unicode text in the UCS-4
+encoding, where each character is always 4 bytes long.  Here the
+number of bytes used is 4 times the given length.</li>
+</ul>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> string <span class="soft">from</span> [&#8220;int8&#8221;, &#8220;uint8&#8221;, &#8220;int16&#8221;, &#8220;uint16&#8221;, &#8220;int32&#8221;, &#8220;uint32&#8221;, &#8220;int64&#8221;, &#8220;uint64&#8221;, &#8220;float32&#8221;, &#8220;float64&#8221;, &#8220;complex64&#8221;, &#8220;complex128&#8221;, &#8220;bool8&#8221;].</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> array.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype-anyof-1-0"><span class="entry">index[0]</span></p>
+<p><span class="soft">Type:</span> string <span class="soft">from</span> [&#8220;ascii&#8221;, &#8220;ucs4&#8221;].</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype-anyof-1-1"><span class="entry">index[1]</span></p>
+<p><span class="soft">Type:</span> integer  ≥ 0.</p>
+</div></blockquote>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype"><span class="entry">datatype</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span>definitions/scalar-datatype</span></a> <span class="soft">or</span> array <span class="soft">of</span> ( <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span>definitions/scalar-datatype</span></a> <span class="soft">or</span> object ).</p>
+<p>The data format of the array elements.  May be a single scalar
+datatype, or may be a nested list of datatypes.  When a list, each field
+may have a name.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span>definitions/scalar-datatype</span></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span>definitions/scalar-datatype</span></a> <span class="soft">or</span> object ).</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items"><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span>definitions/scalar-datatype</span></a> <span class="soft">or</span> object.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-scalar-datatype"><span>definitions/scalar-datatype</span></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> object.</p>
+<p><span class="category">Properties:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-1-properties-name"><span class="entry">name</span></p>
+<p><span class="soft">Type:</span> string ( <span class="soft">regex</span> <code class="regexp docutils literal"><span class="pre">[A-Za-z_][A-Za-z0-9_]*</span></code> ).</p>
+<p>The name of the field</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-1-properties-datatype"><span class="entry">datatype</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype"><span>definitions/datatype</span></a>. Required.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-1-properties-byteorder"><span class="entry">byteorder</span></p>
+<p><span class="soft">Type:</span> string <span class="soft">from</span> [&#8220;big&#8221;, &#8220;little&#8221;].</p>
+<p>The byteorder for the field.  If not provided, the
+byteorder of the datatype as a whole will be used.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-1-properties-shape"><span class="entry">shape</span></p>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( integer  ≥ 0 ).</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype-anyof-1-items-anyof-1-properties-shape-items"><span class="soft">Type:</span> integer  ≥ 0.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span class="entry">inline-data</span></p>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( number <span class="soft">or</span> string <span class="soft">or</span> null <span class="soft">or</span> <a class="reference internal" href="complex-1.0.0.html"><em>complex-1.0.0</em></a> <span class="soft">or</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span>definitions/inline-data</span></a> <span class="soft">or</span> boolean ).</p>
+<p>Inline data is stored in YAML format directly in the tree, rather than
+referencing a binary block.  It is made out of nested lists.</p>
+<p>If the datatype of the array is not specified, it is inferred from
+the array contents.  Type inference is supported only for
+homogeneous arrays, not tables.</p>
+<ul class="simple">
+<li>If any of the elements in the array are YAML strings, the
+<code class="code docutils literal"><span class="pre">datatype</span></code> of the entire array is <code class="code docutils literal"><span class="pre">ucs4</span></code>, with the
+width of the largest string in the column, otherwise...</li>
+<li>If any of the elements in the array are complex numbers, the
+<code class="code docutils literal"><span class="pre">datatype</span></code> of the entire column is <code class="code docutils literal"><span class="pre">complex128</span></code>,
+otherwise...</li>
+<li>If any of the types in the column are numbers with a decimal point,
+the <code class="code docutils literal"><span class="pre">datatype</span></code> of the entire column is <code class="code docutils literal"><span class="pre">float64</span></code>,
+otherwise..</li>
+<li>If any of the types in the column are integers, the
+<code class="code docutils literal"><span class="pre">datatype</span></code> of the entire column is <code class="code docutils literal"><span class="pre">int64</span></code>,
+otherwise...</li>
+<li>The <code class="code docutils literal"><span class="pre">datatype</span></code> of the entire column is <code class="code docutils literal"><span class="pre">bool8</span></code>.</li>
+</ul>
+<p>Masked values may be included in the array using <code class="code docutils literal"><span class="pre">null</span></code>.  If an
+explicit mask array is also provided, it takes precedence.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items"><span class="soft">Type:</span> number <span class="soft">or</span> string <span class="soft">or</span> null <span class="soft">or</span> <a class="reference internal" href="complex-1.0.0.html"><em>complex-1.0.0</em></a> <span class="soft">or</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span>definitions/inline-data</span></a> <span class="soft">or</span> boolean.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> number.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> string.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items-anyof-2"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> null.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items-anyof-3"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="complex-1.0.0.html"><em>complex-1.0.0</em></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items-anyof-4"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span>definitions/inline-data</span></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data-items-anyof-5"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> boolean.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span>definitions/inline-data</span></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> object.</p>
+<p><span class="category">Properties:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-source"><span class="entry">source</span></p>
+<p><span class="soft">Type:</span> integer <span class="soft">or</span> string ( <span class="soft">format</span> uri ).</p>
+<p>The source of the data.</p>
+<ul class="simple">
+<li>If an integer: If positive, the zero-based index of the block
+within the same file. If negative, the index from the last block
+within the same file.  For example, a source of <code class="code docutils literal"><span class="pre">-1</span></code>
+corresponds to the last block in the same file.</li>
+<li>If a string, a URI to an external ASDF file containing the block
+data.  Relative URIs and <code class="code docutils literal"><span class="pre">file:</span></code> and <code class="code docutils literal"><span class="pre">http:</span></code> protocols
+must be supported.  Other protocols may be supported by specific
+library implementations.</li>
+</ul>
+<p>The ability to reference block data in an external ASDF file
+is intentionally limited to the first block in the external
+ASDF file, and is intended only to support the needs of
+<a class="reference internal" href="../../../../file_layout.html#exploded"><span>exploded</span></a>.  For the more general case of
+referencing data in an external ASDF file, use tree
+<a class="reference internal" href="../../../../tree.html#references"><span>references</span></a>.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-source-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> integer.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-source-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> string ( <span class="soft">format</span> uri ).</p>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-data"><span class="entry">data</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-inline-data"><span>definitions/inline-data</span></a>.</p>
+<p>The data for the array inline.</p>
+<p>If <code class="code docutils literal"><span class="pre">datatype</span></code> and/or <code class="code docutils literal"><span class="pre">shape</span></code> are also provided, they must
+match the data here and can be used as a consistency check.
+<code class="code docutils literal"><span class="pre">strides</span></code>, <code class="code docutils literal"><span class="pre">offset</span></code> and <code class="code docutils literal"><span class="pre">byteorder</span></code> are meaningless when
+<code class="code docutils literal"><span class="pre">data</span></code> is provided.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-shape"><span class="entry">shape</span></p>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( integer  ≥ 0 <span class="soft">or</span> any <span class="soft">from</span> [&#8220;*&#8221;] ).</p>
+<p>The shape of the array.</p>
+<p>The first entry may be the string <code class="code docutils literal"><span class="pre">*</span></code>, indicating that the
+length of the first index of the array will be automatically
+determined from the size of the block.  This is used for
+streaming support.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-shape-items"><span class="soft">Type:</span> integer  ≥ 0 <span class="soft">or</span> any <span class="soft">from</span> [&#8220;*&#8221;].</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-shape-items-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> integer  ≥ 0.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-shape-items-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> any <span class="soft">from</span> [&#8220;*&#8221;].</p>
+</div></blockquote>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-datatype"><span class="entry">datatype</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-definitions-datatype"><span>definitions/datatype</span></a>.</p>
+<p>The data format of the array elements.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-byteorder"><span class="entry">byteorder</span></p>
+<p><span class="soft">Type:</span> string <span class="soft">from</span> [&#8220;big&#8221;, &#8220;little&#8221;].</p>
+<p>The byte order (big- or little-endian) of the array data.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-offset"><span class="entry">offset</span></p>
+<p><span class="soft">Type:</span> integer  ≥ 0.</p>
+<p>The offset, in bytes, within the data for this start of this view.</p>
+<p><span class="soft">Default:</span> 0</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-strides"><span class="entry">strides</span></p>
+<p><span class="soft">Type:</span> array <span class="soft">of</span> ( integer  ≥ 1 <span class="soft">or</span> integer  ≤ -1 ).</p>
+<p>The number of bytes to skip in each dimension.  If not provided, the array is assumed by be contiguous and in C order.  If provided, must be the same length as the shape property.</p>
+<p><span class="category">Items:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-strides-items"><span class="soft">Type:</span> integer  ≥ 1 <span class="soft">or</span> integer  ≤ -1.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-strides-items-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> integer  ≥ 1.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-strides-items-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> integer  ≤ -1.</p>
+</div></blockquote>
+</div></blockquote>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-mask"><span class="entry">mask</span></p>
+<p><span class="soft">Type:</span> number <span class="soft">or</span> <a class="reference internal" href="complex-1.0.0.html"><em>complex-1.0.0</em></a> <span class="soft">or</span> <a class="reference internal" href=""><em>ndarray-1.0.0</em></a> <span class="soft">and</span> any.</p>
+<p>Describes how missing values in the array are stored.  If a scalar number, that number is used to represent missing values. If an ndarray, the given array provides a mask, where non-zero values represent missing values in this array.  The mask array must be broadcastable to the dimensions of this array.</p>
+<p><span class="category">Any of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-mask-anyof-0"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> number.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-mask-anyof-1"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href="complex-1.0.0.html"><em>complex-1.0.0</em></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-mask-anyof-2"><span class="entry">—</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href=""><em>ndarray-1.0.0</em></a> <span class="soft">and</span> any.</p>
+<p><span class="category">All of:</span></p>
+<blockquote>
+<div><p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-mask-anyof-2-allof-0"><span class="entry">0</span></p>
+<p><span class="soft">Type:</span> <a class="reference internal" href=""><em>ndarray-1.0.0</em></a>.</p>
+<p id="http-stsci-edu-schemas-asdf-core-ndarray-1-0-0-anyof-1-properties-mask-anyof-2-allof-1"><span class="entry">1</span></p>
+<p><span class="soft">Type:</span> any.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+<p><span class="category">Examples:</span></p>
+<p>An inline array, with implicit data type:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">[[1, 0, 0],</span>
+   <span class="l-Scalar-Plain">[0, 1, 0],</span>
+   <span class="l-Scalar-Plain">[0, 0, 1]]</span>
+</pre></div>
+</div>
+<p>An inline array, with an explicit data type:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">[[</span><span class="nv">1</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">],</span>
+     <span class="p-Indicator">[</span><span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">1</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">],</span>
+     <span class="p-Indicator">[</span><span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">0</span><span class="p-Indicator">,</span> <span class="nv">1</span><span class="p-Indicator">]]</span>
+</pre></div>
+</div>
+<p>An inline structured array, where the types of each column are automatically detected:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">[[M110, 110, 205, And],</span>
+   <span class="l-Scalar-Plain">[ M31,  31, 224, And],</span>
+   <span class="l-Scalar-Plain">[ M32,  32, 221, And],</span>
+   <span class="l-Scalar-Plain">[M103, 103, 581, Cas]]</span>
+</pre></div>
+</div>
+<p>An inline structured array, where the types of each column are explicitly specified:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="p-Indicator">[[</span><span class="s">&#39;ascii&#39;</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">],</span> <span class="nv">uint16</span><span class="p-Indicator">,</span> <span class="nv">uint16</span><span class="p-Indicator">,</span> <span class="p-Indicator">[</span><span class="s">&#39;ascii&#39;</span><span class="p-Indicator">,</span> <span class="nv">4</span><span class="p-Indicator">]]</span>
+  <span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">[[</span><span class="nv">M110</span><span class="p-Indicator">,</span> <span class="nv">110</span><span class="p-Indicator">,</span> <span class="nv">205</span><span class="p-Indicator">,</span> <span class="nv">And</span><span class="p-Indicator">],</span>
+     <span class="p-Indicator">[</span> <span class="nv">M31</span><span class="p-Indicator">,</span>  <span class="nv">31</span><span class="p-Indicator">,</span> <span class="nv">224</span><span class="p-Indicator">,</span> <span class="nv">And</span><span class="p-Indicator">],</span>
+     <span class="p-Indicator">[</span> <span class="nv">M32</span><span class="p-Indicator">,</span>  <span class="nv">32</span><span class="p-Indicator">,</span> <span class="nv">221</span><span class="p-Indicator">,</span> <span class="nv">And</span><span class="p-Indicator">],</span>
+     <span class="p-Indicator">[</span><span class="nv">M103</span><span class="p-Indicator">,</span> <span class="nv">103</span><span class="p-Indicator">,</span> <span class="nv">581</span><span class="p-Indicator">,</span> <span class="nv">Cas</span><span class="p-Indicator">]]</span>
+</pre></div>
+</div>
+<p>A double-precision array, in contiguous memory in a block within the same file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">1024</span><span class="p-Indicator">,</span> <span class="nv">1024</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+</pre></div>
+</div>
+<p>A view of a tile in that image:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+  <span class="l-Scalar-Plain">strides</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">8192</span><span class="p-Indicator">,</span> <span class="nv">8</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">offset</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2099200</span>
+</pre></div>
+</div>
+<p>A structured datatype, with nested columns for a coordinate in (<em>ra</em>, <em>dec</em>), and a 3x3 convolution kernel:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">64</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">coordinate</span>
+      <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ra</span>
+          <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">dec</span>
+          <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">kernel</span>
+      <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float32</span>
+      <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">3</span><span class="p-Indicator">,</span> <span class="nv">3</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+</pre></div>
+</div>
+<p>An array in Fortran order:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">1024</span><span class="p-Indicator">,</span> <span class="nv">1024</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+  <span class="l-Scalar-Plain">strides</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">8192</span><span class="p-Indicator">,</span> <span class="nv">8</span><span class="p-Indicator">]</span>
+</pre></div>
+</div>
+<p>An array where values of -999 are treated as missing:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+  <span class="l-Scalar-Plain">mask</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">-999</span>
+</pre></div>
+</div>
+<p>An array where another array is used as a mask:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+  <span class="l-Scalar-Plain">mask</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+    <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
+    <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+    <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bool8</span>
+    <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+</pre></div>
+</div>
+<p>An array where the data is stored in the first block in another ASDF file.:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0</span>
+  <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">external.asdf</span>
+  <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">256</span><span class="p-Indicator">,</span> <span class="nv">256</span><span class="p-Indicator">]</span>
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64</span>
+  <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little</span>
+</pre></div>
+</div>
+<div class="section" id="original-schema-in-yaml">
+<h2>Original schema in YAML<a class="headerlink" href="#original-schema-in-yaml" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference download internal" href="../../../../_downloads/ndarray-1.0.0.yaml"><code class="xref download docutils literal"><span class="pre">[Download</span> <span class="pre">raw]</span></code></a></p>
+<div class="highlight-yaml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376</pre></div></td><td class="code"><div class="highlight"><pre><span class="nt">%YAML</span> <span class="m">1.1</span>
+<span class="nn">---</span>
+<span class="l-Scalar-Plain">$schema</span><span class="p-Indicator">:</span> <span class="s">&quot;http://stsci.edu/schemas/asdf/asdf-schema-1.0.0&quot;</span>
+<span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="s">&quot;http://stsci.edu/schemas/asdf/core/ndarray-1.0.0&quot;</span>
+<span class="l-Scalar-Plain">tag</span><span class="p-Indicator">:</span> <span class="s">&quot;tag:stsci.edu:asdf/core/ndarray-1.0.0&quot;</span>
+
+<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+  <span class="no">An *n*-dimensional array.</span>
+
+<span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+  <span class="no">There are two ways to store the data in an ndarray.</span>
+
+  <span class="no">- Inline in the tree: This is recommended only for small arrays.  In</span>
+    <span class="no">this case, the entire ``ndarray`` tag may be a nested list, in</span>
+    <span class="no">which case the type of the array is inferred from the content.</span>
+    <span class="no">(See the rules for type inference in the ``inline-data``</span>
+    <span class="no">definition below.)  The inline data may also be given in the</span>
+    <span class="no">``data`` property, in which case it is possible to explicitly</span>
+    <span class="no">specify the ``datatype`` and other properties.</span>
+
+  <span class="no">- External to the tree: The data comes from a [block](ref:block)</span>
+    <span class="no">within the same ASDF file or an external ASDF file referenced by a</span>
+    <span class="no">URI.</span>
+
+<span class="l-Scalar-Plain">examples</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An inline array, with implicit data type</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">[[1, 0, 0],</span>
+           <span class="no">[0, 1, 0],</span>
+           <span class="no">[0, 0, 1]]</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An inline array, with an explicit data type</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">data:</span>
+            <span class="no">[[1, 0, 0],</span>
+             <span class="no">[0, 1, 0],</span>
+             <span class="no">[0, 0, 1]]</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An inline structured array, where the types of each column are</span>
+      <span class="l-Scalar-Plain">automatically detected</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">[[M110, 110, 205, And],</span>
+           <span class="no">[ M31,  31, 224, And],</span>
+           <span class="no">[ M32,  32, 221, And],</span>
+           <span class="no">[M103, 103, 581, Cas]]</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An inline structured array, where the types of each column are</span>
+      <span class="l-Scalar-Plain">explicitly specified</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">datatype: [[&#39;ascii&#39;, 4], uint16, uint16, [&#39;ascii&#39;, 4]]</span>
+          <span class="no">data:</span>
+            <span class="no">[[M110, 110, 205, And],</span>
+             <span class="no">[ M31,  31, 224, And],</span>
+             <span class="no">[ M32,  32, 221, And],</span>
+             <span class="no">[M103, 103, 581, Cas]]</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">A double-precision array, in contiguous memory in a block within</span>
+      <span class="l-Scalar-Plain">the same file</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: 0</span>
+          <span class="no">shape: [1024, 1024]</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">byteorder: little</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">A view of a tile in that image</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: 0</span>
+          <span class="no">shape: [256, 256]</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">byteorder: little</span>
+          <span class="no">strides: [8192, 8]</span>
+          <span class="no">offset: 2099200</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">A structured datatype, with nested columns for a coordinate in</span>
+      <span class="l-Scalar-Plain">(*ra*, *dec*), and a 3x3 convolution kernel</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: 0</span>
+          <span class="no">shape: [64]</span>
+          <span class="no">datatype:</span>
+            <span class="no">- name: coordinate</span>
+              <span class="no">datatype:</span>
+                <span class="no">- name: ra</span>
+                  <span class="no">datatype: float64</span>
+                <span class="no">- name: dec</span>
+                  <span class="no">datatype: float64</span>
+            <span class="no">- name: kernel</span>
+              <span class="no">datatype: float32</span>
+              <span class="no">shape: [3, 3]</span>
+          <span class="no">byteorder: little</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An array in Fortran order</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: 0</span>
+          <span class="no">shape: [1024, 1024]</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">byteorder: little</span>
+          <span class="no">strides: [8192, 8]</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An array where values of -999 are treated as missing</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: 0</span>
+          <span class="no">shape: [256, 256]</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">byteorder: little</span>
+          <span class="no">mask: -999</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An array where another array is used as a mask</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: 0</span>
+          <span class="no">shape: [256, 256]</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">byteorder: little</span>
+          <span class="no">mask: !core/ndarray-1.0.0</span>
+            <span class="no">source: 1</span>
+            <span class="no">shape: [256, 256]</span>
+            <span class="no">datatype: bool8</span>
+            <span class="no">byteorder: little</span>
+
+  <span class="p-Indicator">-</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">An array where the data is stored in the first block in</span>
+      <span class="l-Scalar-Plain">another ASDF file.</span>
+    <span class="p-Indicator">-</span> <span class="p-Indicator">|</span>
+        <span class="no">!core/ndarray-1.0.0</span>
+          <span class="no">source: external.asdf</span>
+          <span class="no">shape: [256, 256]</span>
+          <span class="no">datatype: float64</span>
+          <span class="no">byteorder: little</span>
+
+<span class="l-Scalar-Plain">definitions</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">scalar-datatype</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+      <span class="no">Describes the type of a single element.</span>
+
+      <span class="no">There is a set of numeric types, each with a single identifier:</span>
+
+      <span class="no">- `int8`, `int16`, `int32`, `int64`: Signed integer types, with</span>
+        <span class="no">the given bit size.</span>
+
+      <span class="no">- `uint8`, `uint16`, `uint32`, `uint64`: Unsigned integer types,</span>
+        <span class="no">with the given bit size.</span>
+
+      <span class="no">- `float32`: Single-precision floating-point type or &quot;binary32&quot;,</span>
+        <span class="no">as defined in IEEE 754.</span>
+
+      <span class="no">- `float64`: Double-precision floating-point type or &quot;binary64&quot;,</span>
+        <span class="no">as defined in IEEE 754.</span>
+
+      <span class="no">- `complex64`: Complex number where the real and imaginary parts</span>
+        <span class="no">are each single-precision floating-point (&quot;binary32&quot;) numbers,</span>
+        <span class="no">as defined in IEEE 754.</span>
+
+      <span class="no">- `complex128`: Complex number where the real and imaginary</span>
+        <span class="no">parts are each double-precision floating-point (&quot;binary64&quot;)</span>
+        <span class="no">numbers, as defined in IEEE 754.</span>
+
+      <span class="no">There are two distinct fixed-length string types, which must</span>
+      <span class="no">be indicated with a 2-element array where the first element is an</span>
+      <span class="no">identifier for the string type, and the second is a length:</span>
+
+      <span class="no">- `ascii`: A string containing ASCII text (all codepoints &lt;</span>
+        <span class="no">128), where each character is 1 byte.</span>
+
+      <span class="no">- `ucs4`: A string containing unicode text in the UCS-4</span>
+        <span class="no">encoding, where each character is always 4 bytes long.  Here</span>
+        <span class="no">the number of bytes used is 4 times the given length.</span>
+
+    <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">int8</span><span class="p-Indicator">,</span> <span class="nv">uint8</span><span class="p-Indicator">,</span> <span class="nv">int16</span><span class="p-Indicator">,</span> <span class="nv">uint16</span><span class="p-Indicator">,</span> <span class="nv">int32</span><span class="p-Indicator">,</span> <span class="nv">uint32</span><span class="p-Indicator">,</span> <span class="nv">int64</span><span class="p-Indicator">,</span> <span class="nv">uint64</span><span class="p-Indicator">,</span>
+               <span class="nv">float32</span><span class="p-Indicator">,</span> <span class="nv">float64</span><span class="p-Indicator">,</span> <span class="nv">complex64</span><span class="p-Indicator">,</span> <span class="nv">complex128</span><span class="p-Indicator">,</span> <span class="nv">bool8</span><span class="p-Indicator">]</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+        <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">ascii</span><span class="p-Indicator">,</span> <span class="nv">ucs4</span><span class="p-Indicator">]</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+            <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+        <span class="l-Scalar-Plain">minLength</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+        <span class="l-Scalar-Plain">maxLength</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">2</span>
+
+  <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+      <span class="no">The data format of the array elements.  May be a single scalar</span>
+      <span class="no">datatype, or may be a nested list of datatypes.  When a list, each field</span>
+      <span class="no">may have a name.</span>
+    <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/scalar-datatype&quot;</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+        <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/scalar-datatype&quot;</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+              <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+                <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+                  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+                  <span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="s">&quot;[A-Za-z_][A-Za-z0-9_]*&quot;</span>
+                  <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">The name of the field</span>
+                <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span>
+                  <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/datatype&quot;</span>
+                <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span>
+                  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+                  <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">big</span><span class="p-Indicator">,</span> <span class="nv">little</span><span class="p-Indicator">]</span>
+                  <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+                    <span class="no">The byteorder for the field.  If not provided, the</span>
+                    <span class="no">byteorder of the datatype as a whole will be used.</span>
+                <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span>
+                  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+                  <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+                    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+                    <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+              <span class="l-Scalar-Plain">required</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">datatype</span><span class="p-Indicator">]</span>
+
+  <span class="l-Scalar-Plain">inline-data</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+      <span class="no">Inline data is stored in YAML format directly in the tree, rather than</span>
+      <span class="no">referencing a binary block.  It is made out of nested lists.</span>
+
+      <span class="no">If the datatype of the array is not specified, it is inferred from</span>
+      <span class="no">the array contents.  Type inference is supported only for</span>
+      <span class="no">homogeneous arrays, not tables.</span>
+
+      <span class="no">- If any of the elements in the array are YAML strings, the</span>
+        <span class="no">`datatype` of the entire array is `ucs4`, with the width of</span>
+        <span class="no">the largest string in the column, otherwise...</span>
+
+      <span class="no">- If any of the elements in the array are complex numbers, the</span>
+        <span class="no">`datatype` of the entire column is `complex128`, otherwise...</span>
+
+      <span class="no">- If any of the types in the column are numbers with a decimal</span>
+        <span class="no">point, the `datatype` of the entire column is `float64`,</span>
+        <span class="no">otherwise..</span>
+
+      <span class="no">- If any of the types in the column are integers, the `datatype`</span>
+        <span class="no">of the entire column is `int64`, otherwise...</span>
+
+      <span class="no">- The `datatype` of the entire column is `bool8`.</span>
+
+      <span class="no">Masked values may be included in the array using `null`.  If an</span>
+      <span class="no">explicit mask array is also provided, it takes precedence.</span>
+
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+    <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">number</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;null&quot;</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;complex-1.0.0&quot;</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/inline-data&quot;</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+
+<span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/inline-data&quot;</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">The source of the data.</span>
+
+          <span class="no">- If an integer: If positive, the zero-based index of the</span>
+            <span class="no">block within the same file. If negative, the index from</span>
+            <span class="no">the last block within the same file.  For example, a</span>
+            <span class="no">source of `-1` corresponds to the last block in the same</span>
+            <span class="no">file.</span>
+
+          <span class="no">- If a string, a URI to an external ASDF file containing the</span>
+            <span class="no">block data.  Relative URIs and ``file:`` and ``http:``</span>
+            <span class="no">protocols must be supported.  Other protocols may be supported</span>
+            <span class="no">by specific library implementations.</span>
+
+          <span class="no">The ability to reference block data in an external ASDF file</span>
+          <span class="no">is intentionally limited to the first block in the external</span>
+          <span class="no">ASDF file, and is intended only to support the needs of</span>
+          <span class="no">[exploded](ref:exploded).  For the more general case of</span>
+          <span class="no">referencing data in an external ASDF file, use tree</span>
+          <span class="no">[references](ref:references).</span>
+
+        <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+            <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uri</span>
+
+      <span class="l-Scalar-Plain">data</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">The data for the array inline.</span>
+
+          <span class="no">If `datatype` and/or `shape` are also provided, they must</span>
+          <span class="no">match the data here and can be used as a consistency check.</span>
+          <span class="no">`strides`, `offset` and `byteorder` are meaningless when</span>
+          <span class="no">`data` is provided.</span>
+        <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/inline-data&quot;</span>
+
+      <span class="l-Scalar-Plain">shape</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">The shape of the array.</span>
+
+          <span class="no">The first entry may be the string `*`, indicating that the</span>
+          <span class="no">length of the first index of the array will be automatically</span>
+          <span class="no">determined from the size of the block.  This is used for</span>
+          <span class="no">streaming support.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+        <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+              <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="s">&#39;*&#39;</span><span class="p-Indicator">]</span>
+
+      <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+          <span class="no">The data format of the array elements.</span>
+        <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;#/definitions/datatype&quot;</span>
+
+      <span class="l-Scalar-Plain">byteorder</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+          <span class="no">The byte order (big- or little-endian) of the array data.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">big</span><span class="p-Indicator">,</span> <span class="nv">little</span><span class="p-Indicator">]</span>
+
+      <span class="l-Scalar-Plain">offset</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+          <span class="no">The offset, in bytes, within the data for this start of this</span>
+          <span class="no">view.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+        <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+
+      <span class="l-Scalar-Plain">strides</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+          <span class="no">The number of bytes to skip in each dimension.  If not provided,</span>
+          <span class="no">the array is assumed by be contiguous and in C order.  If</span>
+          <span class="no">provided, must be the same length as the shape property.</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+        <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+              <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+              <span class="l-Scalar-Plain">maximum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">-1</span>
+
+      <span class="l-Scalar-Plain">mask</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="p-Indicator">&gt;</span>
+          <span class="no">Describes how missing values in the array are stored.  If a</span>
+          <span class="no">scalar number, that number is used to represent missing values.</span>
+          <span class="no">If an ndarray, the given array provides a mask, where non-zero</span>
+          <span class="no">values represent missing values in this array.  The mask array</span>
+          <span class="no">must be broadcastable to the dimensions of this array.</span>
+        <span class="l-Scalar-Plain">anyOf</span><span class="p-Indicator">:</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">number</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;complex-1.0.0&quot;</span>
+          <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">allOf</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">$ref</span><span class="p-Indicator">:</span> <span class="s">&quot;ndarray-1.0.0&quot;</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bool8</span>
+
+    <span class="l-Scalar-Plain">dependencies</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">source</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">shape</span><span class="p-Indicator">,</span> <span class="nv">datatype</span><span class="p-Indicator">,</span> <span class="nv">byteorder</span><span class="p-Indicator">]</span>
+
+    <span class="l-Scalar-Plain">propertyOrder</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">source</span><span class="p-Indicator">,</span> <span class="nv">data</span><span class="p-Indicator">,</span> <span class="nv">mask</span><span class="p-Indicator">,</span> <span class="nv">datatype</span><span class="p-Indicator">,</span> <span class="nv">byteorder</span><span class="p-Indicator">,</span> <span class="nv">shape</span><span class="p-Indicator">,</span> <span class="nv">offset</span><span class="p-Indicator">,</span> <span class="nv">strides</span><span class="p-Indicator">]</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Michael Droettboom, Erik Bray, Space Telescope Science Institute.<br/>
+      Last updated on Sep 18, 2015.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

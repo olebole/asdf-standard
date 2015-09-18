@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appendix A: Embedding ASDF in FITS &mdash; ASDF Standard 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/asdfstandard.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="_static/logo.ico"/>
+    <link rel="top" title="ASDF Standard 1.0.0 documentation" href="index.html" />
+    <link rel="prev" title="Changes" href="changes.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+  
+  <a href="https://github.com/spacetelescope/asdf-standard"
+     class="visible-desktop"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+    alt="Fork me on GitHub"></a>
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          ASDF Standard</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_layout.html">Low-level file layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tree.html">The tree in-depth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Versioning Conventions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemas/index.html">ASDF schema definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">Extending ASDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_limits.html">Known limits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Appendix A: Embedding ASDF in FITS</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="changes.html" title="Previous Chapter: Changes"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Changes</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <div class="section" id="appendix-a-embedding-asdf-in-fits">
+<h1>Appendix A: Embedding ASDF in FITS<a class="headerlink" href="#appendix-a-embedding-asdf-in-fits" title="Permalink to this headline">¶</a></h1>
+<p>While ASDF is designed to replace all of the existing use cases of
+FITS, there will still be cases where files need to be produced in
+FITS.  Even then, it would be nice to take advantage of the
+highly-structured nature of ASDF to store content that can not easily
+be represented in FITS in a FITS file.  This appendix describes a
+convention for embedding ASDF content in a FITS file.</p>
+<p>The content of the ASDF file is placed in the data portion of an extra
+image extension named <code class="docutils literal"><span class="pre">ASDF</span></code> (<code class="docutils literal"><span class="pre">EXTNAME</span> <span class="pre">=</span> <span class="pre">'ASDF'</span></code>).  (By
+convention, the datatype is unsigned 8-bit integers (<code class="docutils literal"><span class="pre">BITPIX</span> <span class="pre">=</span> <span class="pre">8</span></code>)
+and is one-dimensional (<code class="docutils literal"><span class="pre">NAXIS</span> <span class="pre">=</span> <span class="pre">1</span></code>), but this is not strictly
+necessary.)</p>
+<p>Rather than including a copy of the large data arrays in the ASDF
+extension, the ASDF content may refer to binary data stored in regular
+FITS extensions elsewhere in the same file.  The convention for doing
+this is to set the <code class="docutils literal"><span class="pre">source</span></code> property of a <a class="reference internal" href="schemas/stsci.edu/asdf/core/ndarray-1.0.0.html#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0"><span>ndarray</span></a> object to a
+special string identifier for a FITS reference.  These values come in
+two forms:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">fits:EXTNAME,EXTVER</span></code>: Where <code class="docutils literal"><span class="pre">EXTNAME</span></code> and <code class="docutils literal"><span class="pre">EXTVER</span></code> uniquely
+identify a FITS extension.</li>
+<li><code class="docutils literal"><span class="pre">fits:INDEX</span></code>: Where <code class="docutils literal"><span class="pre">INDEX</span></code> is the zero-based index of a FITS
+extension.</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">fits:EXTNAME,EXTVER</span></code> form is preferred, since it allows for
+rearranging the FITS extensions in the file without the need to update
+the content of the <code class="docutils literal"><span class="pre">ASDF</span></code> extension, and thus such rearrangements
+could be performed by a non-ASDF-aware FITS library.</p>
+<p>Such &#8220;FITS references&#8221; simply point to the binary content of the data
+portion of a FITS header/data unit.  There is no enforcement that the
+<code class="docutils literal"><span class="pre">datatype</span></code> of the ASDF <a class="reference internal" href="schemas/stsci.edu/asdf/core/ndarray-1.0.0.html#http-stsci-edu-schemas-asdf-core-ndarray-1-0-0"><span>ndarray</span></a> matches the
+<code class="docutils literal"><span class="pre">BITPIX</span></code> of the FITS extension, or expectation that an explicit
+conversion would be performed if they don&#8217;t match.  It is up to the
+writer of the file to keep the ASDF and FITS datatype descriptions in
+sync.</p>
+<p>The following is a schematic of an example FITS file with an ASDF
+extension.  The ASDF content references the binary data in two FITS
+extensions elsewhere in the file.</p>
+<div class="code highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">HDU 0</span><span class="p-Indicator">:</span>
+<span class="l-Scalar-Plain">┌─────────────────────────────────────┐</span>
+<span class="l-Scalar-Plain">│SIMPLE  = T                          │</span>
+<span class="l-Scalar-Plain">│BITPIX  = -64                        │</span>
+<span class="l-Scalar-Plain">│NAXIS   = 2                          │</span>
+<span class="l-Scalar-Plain">│NAXIS1  = 512                        │</span>
+<span class="l-Scalar-Plain">│NAXIS2  = 512                        │</span>
+<span class="l-Scalar-Plain">│EXTEND  = T                          │</span>
+<span class="l-Scalar-Plain">│EXTNAME = &#39;SCI     &#39;                 │</span>
+<span class="l-Scalar-Plain">│END                                  │</span>
+<span class="l-Scalar-Plain">├─────────────────────────────────────┤</span>
+<span class="l-Scalar-Plain">│...data...                           │&lt;──┐</span>
+<span class="l-Scalar-Plain">└─────────────────────────────────────┘   │</span>
+<span class="l-Scalar-Plain">HDU 1</span><span class="p-Indicator">:</span>                                    <span class="l-Scalar-Plain">│</span>
+<span class="l-Scalar-Plain">┌─────────────────────────────────────┐   │</span>
+<span class="l-Scalar-Plain">│XTENSION= &#39;IMAGE   &#39;                 │   │</span>
+<span class="l-Scalar-Plain">│BITPIX  = -64                        │   │</span>
+<span class="l-Scalar-Plain">│NAXIS   = 2                          │   │</span>
+<span class="l-Scalar-Plain">│NAXIS1  = 512                        │   │</span>
+<span class="l-Scalar-Plain">│NAXIS2  = 512                        │   │</span>
+<span class="l-Scalar-Plain">│EXTNAME = &#39;DQ      &#39;                 │   │</span>
+<span class="l-Scalar-Plain">│END                                  │   │</span>
+<span class="l-Scalar-Plain">├─────────────────────────────────────┤   │</span>
+<span class="l-Scalar-Plain">│...data...                           │&lt;──┼───┐</span>
+<span class="l-Scalar-Plain">└─────────────────────────────────────┘   │   │</span>
+<span class="l-Scalar-Plain">HDU 2</span><span class="p-Indicator">:</span>                                    <span class="l-Scalar-Plain">│   │</span>
+<span class="l-Scalar-Plain">┌─────────────────────────────────────┐   │   │</span>
+<span class="l-Scalar-Plain">│XTENSION= &#39;IMAGE   &#39;                 │   │   │</span>
+<span class="l-Scalar-Plain">│BITPIX  = 8                          │   │   │</span>
+<span class="l-Scalar-Plain">│NAXIS   = 1                          │   │   │</span>
+<span class="l-Scalar-Plain">│NAXIS1  = 361                        │   │   │</span>
+<span class="l-Scalar-Plain">│EXTNAME = &#39;ASDF    &#39;                 │   │   │</span>
+<span class="l-Scalar-Plain">│END                                  │   │   │</span>
+<span class="l-Scalar-Plain">├─────────────────────────────────────┤   │   │</span>
+<span class="l-Scalar-Plain">│#ASDF 1.0.0                          │   │   │</span>
+<span class="l-Scalar-Plain">│%YAML 1.1                            │   │   │</span>
+<span class="l-Scalar-Plain">│%TAG ! tag:stsci.edu:asdf/           │   │   │</span>
+<span class="l-Scalar-Plain">│--- !core/asdf-1.0.0                 │   │   │</span>
+<span class="l-Scalar-Plain">│model</span><span class="p-Indicator">:</span>                               <span class="l-Scalar-Plain">│   │   │</span>
+<span class="l-Scalar-Plain">│  sci</span><span class="p-Indicator">:</span>                               <span class="l-Scalar-Plain">│   │   │</span>
+<span class="l-Scalar-Plain">│    data</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0        │   │   │</span>
+<span class="l-Scalar-Plain">│      source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">fits:SCI,1   ──────────┼───┘   │</span>
+<span class="l-Scalar-Plain">│      datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64              │       │</span>
+<span class="l-Scalar-Plain">│      byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little              │       │</span>
+<span class="l-Scalar-Plain">│      shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">512</span><span class="p-Indicator">]</span>                   <span class="l-Scalar-Plain">│       │</span>
+<span class="l-Scalar-Plain">│    wcs</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">...WCS info...              │       │</span>
+<span class="l-Scalar-Plain">│  dq</span><span class="p-Indicator">:</span>                                <span class="l-Scalar-Plain">│       │</span>
+<span class="l-Scalar-Plain">│    data</span><span class="p-Indicator">:</span> <span class="kt">!core</span><span class="l-Scalar-Plain">/ndarray-1.0.0        │       │</span>
+<span class="l-Scalar-Plain">│      source</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">fits:DQ,1    ──────────┼───────┘</span>
+<span class="l-Scalar-Plain">│      datatype</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">float64              │</span>
+<span class="l-Scalar-Plain">│      byteorder</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">little              │</span>
+<span class="l-Scalar-Plain">│      shape</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="nv">512</span><span class="p-Indicator">]</span>                   <span class="l-Scalar-Plain">│</span>
+<span class="l-Scalar-Plain">│    wcs</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">...WCS info...              │</span>
+<span class="l-Scalar-Plain">│...                                  │</span>
+<span class="l-Scalar-Plain">└─────────────────────────────────────┘</span>
+</pre></div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2014, Michael Droettboom, Erik Bray, Space Telescope Science Institute.<br/>
+      Last updated on Sep 18, 2015.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
